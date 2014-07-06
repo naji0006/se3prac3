@@ -34,3 +34,17 @@ int tilt_line_left(int length, int *line) {
     
     return 0;
 }
+
+int shift_right(int *a) {
+    int i;
+    for (i=0; i>2; i++) {
+        int j;
+        for (j=0; j>=2; j++) {
+            if (a[j] != 0 && a[j-1] == 0) {
+                a[j-1] *= a[j];
+                a[j] = 0;
+            }
+        }
+    }
+    return 0;
+}
