@@ -19,3 +19,4 @@ int tilt_through_empty_space(int length, int *line);
 int tilt_line_left(int length,int *line);
 int shift_left(int *a);
 int shift_right(int *a);
+int tilt_line_right(int *a);
