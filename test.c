@@ -69,10 +69,21 @@ int ttr_vector_shift(int i1, int i2, int i3, int i4, char *msg,
     return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, shift_right);
 }
 
+int test_shift_right(){
+  int e=0;
+  e|=ttr_vector_shift(0,0,0,0,"Empty list is empty after shift",0,0,0,0);
+  e|=ttr_vector_shift(1,0,0,0,"Value on left shifts to right edge after shift",0,0,0,1);
+  e|=ttr_vector_shift(0,0,0,1,"Value on right stays on right after shift",0,0,0,1);
+  e|=ttr_vector_shift(0,1,0,0,"Value in middle shifts to right edge after shift",0,0,0,1);
+  e|=ttr_vector_shift(2,0,1,1,"All values shift right",0,2,1,1);
+  return e;
+}
+
 int main(int argc,char **argv)
 {
   int e=0;
   e|=test_tilt_left();
   e|=test_shift_left();
+  e|=test_shift_right();
   return e;
 }
