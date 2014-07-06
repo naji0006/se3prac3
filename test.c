@@ -43,6 +43,9 @@ int test_tilt_left()
   e|=ttl_vector(0,0,1,1,"cascade identical values (1) and shift to left",2,0,0,0);
   e|=ttl_vector(4,0,1,1,"cascade identical values (1) and shift to first unoccupied position on the left",4,2,0,0);
   e|=ttl_vector(2,0,1,1,"cascade identical values (1) and shift to first unoccupied position on the left",2,2,0,0);
+  e|=ttl_vector(1,2,1,2,"same values at unreachable positions cannot cascade, values stay at same potions",1,2,1,2);
+  e|=ttl_vector(2,1,1,1,"1's at position 2 and 3 cascade and shift. 1 at position 4 shift only to position 3",2,2,1,0);
+  e|=ttl_vector(1,0,1,0,"Same values cascade to position 1 and rest of positions emptied.",2,0,0,0);
   return e;
 }
 
