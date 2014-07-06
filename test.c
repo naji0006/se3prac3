@@ -64,9 +64,15 @@ int test_shift_left(){
   return e;
 }
 
+int ttr_vector_shift(int i1, int i2, int i3, int i4, char *msg,
+        int o1, int o2, int o3, int o4) {
+    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, shift_right);
+}
+
 int main(int argc,char **argv)
 {
   int e=0;
   e|=test_tilt_left();
+  e|=test_shift_left();
   return e;
 }
