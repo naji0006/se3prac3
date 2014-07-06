@@ -48,3 +48,23 @@ int shift_right(int *a) {
     }
     return 0;
 }
+
+int tilt_line_right(int length, int *line) {
+    // make sure vector length is sensible
+    if (length < 1 || length > 255) return -1;
+
+    // slide tiles to the right
+    shift_right(line);
+            
+    // combine tiles as required
+    int i;
+    for (i = 3; i > 0; i--) {
+        if (line[i] == line[i - 1]) {
+            line[i] *= 2;
+            line[i - 1] = 0;
+        }
+    }
+    shift_right(line);
+    
+    return 0;
+}
