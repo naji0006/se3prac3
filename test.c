@@ -64,43 +64,43 @@ int test_shift_left(){
   return e;
 }
 
-int ttr_vector_shift(int i1, int i2, int i3, int i4, char *msg,
-        int o1, int o2, int o3, int o4) {
-    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, shift_right);
-}
-
-int test_shift_right(){
-  int e=0;
-  e|=ttr_vector_shift(0,0,0,0,"Empty list is empty after shift",0,0,0,0);
-  e|=ttr_vector_shift(1,0,0,0,"Value on left shifts to right edge after shift",0,0,0,1);
-  e|=ttr_vector_shift(0,0,0,1,"Value on right stays on right after shift",0,0,0,1);
-  e|=ttr_vector_shift(0,1,0,0,"Value in middle shifts to right edge after shift",0,0,0,1);
-  e|=ttr_vector_shift(2,0,1,1,"All values shift right",0,2,1,1);
-  return e;
-}
-
-int ttr_vector(int i1, int i2, int i3, int i4, char *msg,
-        int o1, int o2, int o3, int o4) {
-    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, tilt_line_right);
-}
-
-int test_tilt_right() {
-  int e=0;
-  e|=ttr_vector(0,0,1,1,"cascade identical values (1) and shift to right",0,0,0,2);
-  e|=ttr_vector(4,0,1,1,"cascade identical values (1) and shift to first unoccupied position on the right",0,0,4,2);
-  e|=ttr_vector(2,0,1,1,"cascade identical values (1) and shift to first unoccupied position on the right",0,0,2,2);
-  e|=ttr_vector(1,2,1,2,"same values at unreachable positions cannot cascade, values stay at same potions",1,2,1,2);
-  e|=ttr_vector(2,1,1,1,"1's at position 2 and 3 cascade and shift to right.",0,2,2,1);
-  e|=ttr_vector(1,0,1,0,"Same values cascade to position 4 and rest of positions emptied.",0,0,0,2);
-  return e;
-}
+//int ttr_vector_shift(int i1, int i2, int i3, int i4, char *msg,
+//        int o1, int o2, int o3, int o4) {
+//    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, shift_right);
+//}
+//
+//int test_shift_right(){
+//  int e=0;
+//  e|=ttr_vector_shift(0,0,0,0,"Empty list is empty after shift",0,0,0,0);
+//  e|=ttr_vector_shift(1,0,0,0,"Value on left shifts to right edge after shift",0,0,0,1);
+//  e|=ttr_vector_shift(0,0,0,1,"Value on right stays on right after shift",0,0,0,1);
+//  e|=ttr_vector_shift(0,1,0,0,"Value in middle shifts to right edge after shift",0,0,0,1);
+//  e|=ttr_vector_shift(2,0,1,1,"All values shift right",0,2,1,1);
+//  return e;
+//}
+//
+//int ttr_vector(int i1, int i2, int i3, int i4, char *msg,
+//        int o1, int o2, int o3, int o4) {
+//    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, tilt_line_right);
+//}
+//
+//int test_tilt_right() {
+//  int e=0;
+//  e|=ttr_vector(0,0,1,1,"cascade identical values (1) and shift to right",0,0,0,2);
+//  e|=ttr_vector(4,0,1,1,"cascade identical values (1) and shift to first unoccupied position on the right",0,0,4,2);
+//  e|=ttr_vector(2,0,1,1,"cascade identical values (1) and shift to first unoccupied position on the right",0,0,2,2);
+//  e|=ttr_vector(1,2,1,2,"same values at unreachable positions cannot cascade, values stay at same potions",1,2,1,2);
+//  e|=ttr_vector(2,1,1,1,"1's at position 2 and 3 cascade and shift to right.",0,2,2,1);
+//  e|=ttr_vector(1,0,1,0,"Same values cascade to position 4 and rest of positions emptied.",0,0,0,2);
+//  return e;
+//}
 
 int main(int argc,char **argv)
 {
   int e=0;
   e|=test_shift_left();
   e|=test_tilt_left();
-  e|=test_shift_right();
-  e|=test_tilt_right();
+//  e|=test_shift_right();
+//  e|=test_tilt_right();
   return e;
 }
