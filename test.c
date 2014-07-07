@@ -305,6 +305,25 @@ int board_add_tile(int i1, int i2, int i3, int i4,
     return 0;
 }
 
+int test_add_tile(){
+  int e;
+    e |= board_add_tile(
+            1, 1, 1, 1,
+            1, 1, 0, 1,
+            1, 0, 1, 1,
+            1, 1, 1, 0,
+            "Added tile to middle", 0);
+
+    e |= board_add_tile(
+            1, 64, 1, 2,
+            32, 1, 1, 1,
+            1, 16, 1, 1,
+            1, 64, 1, 1,
+            "Tile added to completed board", 1);
+    return e;
+}
+
+
 //int ttr_vector_shift(int i1, int i2, int i3, int i4, char *msg,
 //        int o1, int o2, int o3, int o4) {
 //    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, shift_right);
@@ -344,6 +363,7 @@ int main(int argc,char **argv)
   e|=test_board_2_2();
   e|=test_borad_3_3();
   e|=test_board_4_4();
+  e|=test_add_tile();
 //  e|=test_shift_right();
 //  e|=test_tilt_right();
   return e;
