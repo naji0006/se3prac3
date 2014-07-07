@@ -91,3 +91,17 @@ int tilt_board_right(int size,int **board){
     board_rotate_90(size,board);
     return 0;
 }
+
+int board_spawn_tile(int size, int **board) {
+    int i;
+    int j;
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            if (board[i][j] == 0) {
+                board[i][j] = 1;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
