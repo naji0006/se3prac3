@@ -323,7 +323,114 @@ int test_add_tile(){
     return e;
 }
 
+int board_left_testcases() {
+    int e = 0;
+    e |= test_borad_4_4(
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            "Board empty, tilt doesn't leave any effects.",
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            tilt_board_left);
+    e |= test_borad_4_4(
+            1, 0, 0, 1,
+            0, 0, 1, 1,
+            1, 1, 0, 1,
+            0, 1, 0, 1,
+            "Tilting left and cascade.",
+            2, 0, 0, 0,
+            2, 0, 0, 0,
+            2, 1, 0, 0,
+            2, 0, 0, 0,
+            tilt_board_left);
+    return e;
+}
 
+int board_right_testcases() {
+    int e = 0;
+    e |= test_borad_4_4(
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+            "No cascades, values shifting to right only.",
+            0, 0, 0, 1,
+            0, 0, 0, 1,
+            0, 0, 0, 1,
+            0, 0, 0, 1,
+            tilt_board_right);
+    e |= test_borad_4_4(
+            1, 0, 0, 1,
+            0, 0, 1, 1,
+            1, 0, 0, 1,
+            0, 1, 0, 1,
+            "Tilting right and cascade.",
+            0, 0, 0, 2,
+            0, 0, 0, 2,
+            0, 0, 0, 2,
+            0, 0, 0, 2,
+            tilt_board_right);
+    return e;
+}
+
+int board_down_testcases() {
+    int e = 0;
+    e |= test_borad_4_4(
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+            "No cascades, values shifting down only.",
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            1, 1, 1, 1,
+            tilt_board_down);
+    e |= test_borad_4_4(
+            1, 0, 0, 1,
+            0, 0, 1, 1,
+            1, 0, 0, 1,
+            0, 1, 0, 1,
+            "Tilting down and cascade.",
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 2,
+            2, 1, 1, 2,
+            tilt_board_down);
+    return e;
+}
+
+int board_up_testcases() {
+    int e = 0;
+    e |= test_borad_4_4(
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+            "No cascades, values shifting up only.",
+            1, 1, 1, 1,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            tilt_board_up);
+    e |= test_borad_4_4(
+            1, 0, 0, 1,
+            0, 0, 1, 1,
+            1, 0, 0, 1,
+            0, 1, 0, 1,
+            "Tilting up and cascade.",
+            2, 1, 1, 2,
+            0, 0, 0, 2,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            tilt_board_up);
+    return e;
+}
+    
 //int ttr_vector_shift(int i1, int i2, int i3, int i4, char *msg,
 //        int o1, int o2, int o3, int o4) {
 //    return line_vector_test(i1, i2, i3, i4, msg, o1, o2, o3, o4, shift_right);
@@ -364,6 +471,10 @@ int main(int argc,char **argv)
   e|=test_borad_3_3();
   e|=test_board_4_4();
   e|=test_add_tile();
+  e|=board_left_testcases();
+  e|=board_right_testcases();
+  e|=board_down_testcases();
+  e|=board_up_testcases();
 //  e|=test_shift_right();
 //  e|=test_tilt_right();
   return e;
